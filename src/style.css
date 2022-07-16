@@ -156,6 +156,8 @@
   display: flex;
   padding: 0;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .today-forecast-footer li {
@@ -271,6 +273,35 @@
 }
 .footer a {
   text-decoration: none;
+}
+
+/* Media */
+
+@media screen and (max-width: 890px) {
+  .controls {
+    right: auto;
+    top: 15px;
+  }
+  .searchbox {
+    padding-top: 70px;
+  }
+  .search-input {
+    width: 90%;
+  }
+  .search-output {
+    top: 100px;
+    width: 90%;
+  }
+  .today-forecast {
+    padding: 20px 5%;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .today-forecast-footer ul {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* body {
