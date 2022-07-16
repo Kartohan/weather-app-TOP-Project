@@ -16,7 +16,7 @@ function populateHourly(data) {
     const hourlyDes = hourlyElement.querySelector(".hourly-des");
     const hourlyArrow = hourlyElement.querySelector(".wind-arrow-hourly");
     const hourlyWind = hourlyElement.querySelector(".wind-speed-hourly");
-    const hourlyHumidity = hourlyElement.querySelector(".humidity-hourly");
+    const hourlyPop = hourlyElement.querySelector(".pop-hourly");
     const hourlyPressure = hourlyElement.querySelector(".pressure-hourly");
     const hourlyCloudness = hourlyElement.querySelector(".cloudness-hourly");
     const hourlyWindDirection = hourlyElement.querySelector(
@@ -60,7 +60,7 @@ function populateHourly(data) {
     hourlyArrow.style.transform = `rotate(${data.hourly[i].wind_deg + 180}deg)`;
     hourlyWind.innerText = data.hourly[i].wind_speed;
     hourlyWindDirection.innerText = windDirection(data.hourly[i].wind_deg);
-    hourlyHumidity.innerText = data.hourly[i].humidity;
+    hourlyPop.innerText = Math.round(data.hourly[i].pop * 100);
     hourlyPressure.innerText = data.hourly[i].pressure;
     hourlyCloudness.innerText = data.hourly[i].clouds;
 

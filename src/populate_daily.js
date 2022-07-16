@@ -17,9 +17,10 @@ function populateDaily(data) {
     const dailyDes = dailyElement.querySelector(".daily-des");
     const dailyArrow = dailyElement.querySelector(".wind-arrow-daily");
     const dailyWindSpeed = dailyElement.querySelector(".daily-wind-speed");
-    const dailyHumidity = dailyElement.querySelector(".humidity-daily");
+    const dailyPop = dailyElement.querySelector(".pop-daily");
     const dailyCloudness = dailyElement.querySelector(".cloudness-daily");
     const dailyPressure = dailyElement.querySelector(".pressure-daily");
+    const dailyHumidity = dailyElement.querySelector(".humidity-daily");
     const dailySunrise = dailyElement.querySelector(".sunrise-daily");
     const dailySunset = dailyElement.querySelector(".sunset-daily");
     const dailyMoonrise = dailyElement.querySelector(".moonrise-daily");
@@ -57,6 +58,7 @@ function populateDaily(data) {
     dailyArrow.style.transform = `rotate(${data.daily[i].wind_deg + 180}deg)`;
     dailyWindSpeed.innerText = data.daily[i].wind_speed;
     dailyWindDirection.innerText = windDirection(data.daily[i].wind_deg);
+    dailyPop.innerText = Math.round(data.daily[i].pop * 100);
     dailyHumidity.innerText = data.daily[i].humidity;
     dailyCloudness.innerText = data.daily[i].clouds;
     dailyPressure.innerText = data.daily[i].pressure;
