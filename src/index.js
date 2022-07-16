@@ -11,6 +11,7 @@ import {
   fetchData,
 } from "./fetch_data.js";
 import { populateSearch } from "./populate_search.js";
+import gitHubImg from "./GitHub.png";
 
 // Search logic
 
@@ -217,5 +218,8 @@ const cities = [
 
 let randomCity = Math.floor(Math.random() * cities.length);
 populateForecast(cities[randomCity].lat, cities[randomCity].lon, dimension);
+
+const imgGitHub = document.querySelector(".gitHub");
+imgGitHub.src = gitHubImg;
 
 export { metric, capitalizeFirstLetter, windDirection };

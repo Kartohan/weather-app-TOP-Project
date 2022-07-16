@@ -22,7 +22,7 @@ async function getFlag(url) {
 
 async function getCoodrs(city) {
   let data = await fetchData(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
   );
   return data;
 }
