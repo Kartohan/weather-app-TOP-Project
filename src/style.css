@@ -13,6 +13,7 @@
 }
 
 /* Searchbox */
+
 .searchbox {
   display: flex;
   flex-direction: column;
@@ -86,6 +87,7 @@
   background-color: #efefef;
   border-radius: 8px;
   box-shadow: 0 0 10px -3px black;
+  cursor: pointer;
 }
 .controls div {
   padding: 3px;
@@ -98,6 +100,7 @@
 }
 
 /* Today Forecast */
+
 .today-forecast {
   padding: 35px 10%;
   box-shadow: 0 2px 4px -2px black;
@@ -223,6 +226,7 @@
 }
 
 /* Daily forecast */
+
 .daily-forecast {
   display: flex;
   flex-direction: row;
@@ -303,52 +307,3 @@
     align-items: center;
   }
 }
-
-/* body {
-  background: gray;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-} */
-/*
-.output {
-  display: flex;
-  border-bottom: 1px solid black;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-}
-.output:last-child {
-  border-bottom: none;
-}
-.output:hover {
-  background-color: rgb(228, 213, 255);
-}
-.searchbox {
-  padding: 10px;
-  width: 50%;
-  background: none;
-  border-radius: 15px;
-  box-shadow: 0px 0px 3px 1px black;
-}
-#search {
-  width: 100%;
-  border: none;
-  padding: 8px;
-  background: none;
-  border-bottom: 1px solid blue;
-}
-#search:focus {
-  outline: none;
-}
-.search-output {
-  margin-top: 3px;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-.left-box {
-}
-.search-input {
-  display: flex;
-}*/

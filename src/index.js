@@ -2,14 +2,7 @@ import "./style.css";
 import { populateDaily } from "./populate_daily.js";
 import { populateHourly } from "./populate_hourly.js";
 import { populateTodayForecast } from "./populate_today_forecast.js";
-import {
-  getCoodrs,
-  getFlag,
-  getForecast,
-  getForecastCurrent,
-  getPhoto,
-  fetchData,
-} from "./fetch_data.js";
+import { getCoodrs, getForecast, getForecastCurrent } from "./fetch_data.js";
 import { populateSearch } from "./populate_search.js";
 import gitHubImg from "./GitHub.png";
 
@@ -17,6 +10,8 @@ import gitHubImg from "./GitHub.png";
 
 const LOCAL_STORAGE_DIM_VALUE = "weather.dim";
 const LOCAL_STORAGE_METRIC_VALUE = "weather.metric";
+const LOCAL_STORAGE_LAST_CITY_LAT = "weather.lat";
+const LOCAL_STORAGE_LAST_CITY_LON = "weather.lon";
 const controls = document.querySelector(".controls");
 const city = document.querySelector(".city-name");
 let metric = localStorage.getItem(LOCAL_STORAGE_METRIC_VALUE) || true;
@@ -93,6 +88,11 @@ function saveMetric() {
   localStorage.setItem(LOCAL_STORAGE_METRIC_VALUE, metric);
 }
 
+function saveCoords(lat, lon) {
+  localStorage.setItem(LOCAL_STORAGE_LAST_CITY_LAT, lat);
+  localStorage.setItem(LOCAL_STORAGE_LAST_CITY_LON, lon);
+}
+
 const searchForm = document.querySelector(".search-form");
 const searchInput = document.querySelector("#search");
 const searchOutput = document.querySelector(".search-ul");
@@ -131,6 +131,7 @@ function searchForecast(e) {
   let lat = e.target.dataset.lat;
   let lon = e.target.dataset.lon;
   populateForecast(lat, lon, dimension);
+  saveCoords(lat, lon);
   searchOutput.innerHTML = "";
 }
 
@@ -217,7 +218,13 @@ const cities = [
 ];
 
 let randomCity = Math.floor(Math.random() * cities.length);
-populateForecast(cities[randomCity].lat, cities[randomCity].lon, dimension);
+
+let onOpenLat =
+  localStorage.getItem(LOCAL_STORAGE_LAST_CITY_LAT) || cities[randomCity].lat;
+let onOpenLon =
+  localStorage.getItem(LOCAL_STORAGE_LAST_CITY_LON) || cities[randomCity].lon;
+
+populateForecast(onOpenLat, onOpenLon, dimension);
 
 const imgGitHub = document.querySelector(".gitHub");
 imgGitHub.src = gitHubImg;
