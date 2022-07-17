@@ -24,6 +24,6 @@ What is still missing:
 
    17.07.2021 - The site is working. There is support for different displays. Saving the number system and the last selected city.
 
-Header picture by (https://unsplash.com/@billy_huy)[Billy Huynh]
+Header picture by [Billy Huynh](https://unsplash.com/@billy_huy)
 
 Link - https://kartohan.github.io/weather-app-TOP-Project/
