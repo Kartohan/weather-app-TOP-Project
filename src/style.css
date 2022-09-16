@@ -77,6 +77,16 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+.cloud {
+  filter: drop-shadow(0px 0px 1px black);
+}
+.cloud-img,
+.search-temp,
+.search-state,
+.name {
+  pointer-events: none;
+}
 .controls {
   top: 5px;
   right: 10px;

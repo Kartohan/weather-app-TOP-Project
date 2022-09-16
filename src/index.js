@@ -82,6 +82,7 @@ langDimImperial.innerText = dataLang[lang].imperial;
 langDimMetric.innerText = dataLang[lang].metric;
 langDimSpeedMetric.innerText = dataLang[lang].speed.metric;
 langDimSpeedImperial.innerText = dataLang[lang].speed.imperial;
+feelsToday.innerText = dataLang[lang].feels;
 
 langBox.addEventListener("click", (e) => {
   if (e.target.className === "active") {
