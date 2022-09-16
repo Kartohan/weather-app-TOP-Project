@@ -17,13 +17,9 @@ function populateSearch(searchResponse, weatherResponse, lang) {
     `https://openweathermap.org/images/flags/${searchResponse.country.toLowerCase()}.png`
   ).then((data) => {
     if (data == undefined) {
-      searchName.innerHTML = `${
-        searchResponse.local_names[navigator.language]
-      }, ${searchResponse.country}`;
+      searchName.innerHTML = `${searchResponse.name}, ${searchResponse.country}`;
     } else {
-      searchName.innerHTML = `${
-        searchResponse.local_names[navigator.language]
-      }, ${searchResponse.country} <img class="flag"
+      searchName.innerHTML = `${searchResponse.name}, ${searchResponse.country} <img class="flag"
     src="${data}"
     alt="flag"
   />`;
