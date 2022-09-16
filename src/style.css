@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 7px;
+  padding-top: 9px;
   position: relative;
 }
 .search-input {
@@ -307,9 +307,13 @@
 
 /* Media */
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 1140px) {
   .controls {
-    right: auto;
+    right: 5%;
+    top: 15px;
+  }
+  .lang {
+    left: 5%;
     top: 15px;
   }
   .searchbox {
@@ -331,5 +335,19 @@
   .today-forecast-footer ul {
     flex-direction: column;
     align-items: center;
+  }
+  .searchbox {
+    padding-top: 105px;
+  }
+  .lang {
+    left: auto;
+    top: 7px;
+  }
+  .controls {
+    right: auto;
+    top: 54px;
+  }
+  .search-output {
+    top: 136px;
   }
 }
