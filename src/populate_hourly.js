@@ -1,10 +1,15 @@
-import { metric, capitalizeFirstLetter, windDirection } from "./index.js";
+import {
+  metric,
+  capitalizeFirstLetter,
+  windDirection,
+  dataLang,
+} from "./index.js";
 import lightFormat from "date-fns/lightFormat";
 
 const hourlyForecast = document.querySelector(".hourly-forecast");
 const hourTemplate = document.querySelector(".hour-template");
 
-function populateHourly(data) {
+function populateHourly(data, lang) {
   let locale = navigator.language;
   hourlyForecast.innerHTML = "";
   for (let i = 0; i < data.hourly.length; i++) {
@@ -22,6 +27,8 @@ function populateHourly(data) {
     const hourlyWindDirection = hourlyElement.querySelector(
       ".wind-direction-hourly"
     );
+    const langPressure = hourlyElement.querySelector(".lang-pressure");
+    const langFeels = hourlyElement.querySelector(".lang-feels");
     const dim = hourlyElement.querySelectorAll(".dim");
     const dimSpeed = hourlyElement.querySelectorAll(".speed-dim");
     for (let i = 0; i < dim.length; i++) {
@@ -33,9 +40,9 @@ function populateHourly(data) {
     }
     for (let i = 0; i < dimSpeed.length; i++) {
       if (metric == true) {
-        dimSpeed[i].innerText = "m/s";
+        dimSpeed[i].innerText = dataLang[lang].speed.metric;
       } else {
-        dimSpeed[i].innerText = "mph";
+        dimSpeed[i].innerText = dataLang[lang].speed.imperial;
       }
     }
     let full = new Date(data.hourly[i].dt * 1000);
@@ -58,11 +65,16 @@ function populateHourly(data) {
       data.hourly[i].weather[0].description
     );
     hourlyArrow.style.transform = `rotate(${data.hourly[i].wind_deg + 180}deg)`;
-    hourlyWind.innerText = data.hourly[i].wind_speed;
-    hourlyWindDirection.innerText = windDirection(data.hourly[i].wind_deg);
+    hourlyWind.innerText = data.hourly[i].wind_speed.toFixed(1);
+    hourlyWindDirection.innerText = windDirection(
+      data.hourly[i].wind_deg,
+      lang
+    );
     hourlyPop.innerText = Math.round(data.hourly[i].pop * 100);
     hourlyPressure.innerText = data.hourly[i].pressure;
     hourlyCloudness.innerText = data.hourly[i].clouds;
+    langPressure.innerText = dataLang[lang].pressure;
+    langFeels.innerText = dataLang[lang].feels;
 
     hourlyForecast.append(hourlyElement);
   }

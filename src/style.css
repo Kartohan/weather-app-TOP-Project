@@ -99,6 +99,32 @@
   box-shadow: 0 0 7px -3px black;
 }
 
+.lang div {
+  padding: 3px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.lang {
+  top: 5px;
+  left: 10px;
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+  background-color: #efefef;
+  border-radius: 8px;
+  box-shadow: 0 0 10px -3px black;
+  cursor: pointer;
+}
+
+.lang-dim-metric {
+  pointer-events: none;
+}
+.lang-dim-imperial {
+  pointer-events: none;
+}
+
 /* Today Forecast */
 
 .today-forecast {

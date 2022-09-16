@@ -1,9 +1,14 @@
-import { metric, capitalizeFirstLetter, windDirection } from "./index.js";
+import {
+  metric,
+  capitalizeFirstLetter,
+  windDirection,
+  dataLang,
+} from "./index.js";
 
 const dailyForecast = document.querySelector(".daily-forecast");
 const dailyTemplate = document.querySelector(".daily-template");
 
-function populateDaily(data) {
+function populateDaily(data, lang) {
   let locale = navigator.language;
   dailyForecast.innerHTML = "";
   for (let i = 0; i < data.daily.length; i++) {
@@ -25,6 +30,14 @@ function populateDaily(data) {
     const dailySunset = dailyElement.querySelector(".sunset-daily");
     const dailyMoonrise = dailyElement.querySelector(".moonrise-daily");
     const dailyMoonset = dailyElement.querySelector(".moonset-daily");
+    const langPressure = dailyElement.querySelector(".lang-pressure");
+    const langHumidity = dailyElement.querySelector(".lang-humidity");
+    const langSunset = dailyElement.querySelector(".lang-sunset");
+    const langSunrise = dailyElement.querySelector(".lang-sunrise");
+    const langMoonset = dailyElement.querySelector(".lang-moonset");
+    const langMoonrise = dailyElement.querySelector(".lang-moonrise");
+    const langFeelsDay = dailyElement.querySelector(".lang-feelsDay");
+    const langFeelsNight = dailyElement.querySelector(".lang-feelsNight");
     const dim = dailyElement.querySelectorAll(".dim");
     const dimSpeed = dailyElement.querySelectorAll(".dim-speed");
     const dailyWindDirection = dailyElement.querySelector(
@@ -39,9 +52,9 @@ function populateDaily(data) {
     }
     for (let i = 0; i < dimSpeed.length; i++) {
       if (metric == true) {
-        dimSpeed[i].innerText = "m/s";
+        dimSpeed[i].innerText = dataLang[lang].speed.metric;
       } else {
-        dimSpeed[i].innerText = "mph";
+        dimSpeed[i].innerText = dataLang[lang].speed.imperial;
       }
     }
     let date = new Date(data.daily[i].dt * 1000).toLocaleString(locale);
@@ -57,7 +70,7 @@ function populateDaily(data) {
     );
     dailyArrow.style.transform = `rotate(${data.daily[i].wind_deg + 180}deg)`;
     dailyWindSpeed.innerText = data.daily[i].wind_speed;
-    dailyWindDirection.innerText = windDirection(data.daily[i].wind_deg);
+    dailyWindDirection.innerText = windDirection(data.daily[i].wind_deg, lang);
     dailyPop.innerText = Math.round(data.daily[i].pop * 100);
     dailyHumidity.innerText = data.daily[i].humidity;
     dailyCloudness.innerText = data.daily[i].clouds;
@@ -78,6 +91,14 @@ function populateDaily(data) {
     dailySunset.innerText = sunsetDailyTime;
     dailyMoonrise.innerText = moonriseDailyTime;
     dailyMoonset.innerText = moonsetDailyTime;
+    langPressure.innerText = dataLang[lang].pressure;
+    langHumidity.innerText = dataLang[lang].humidity;
+    langSunset.innerText = dataLang[lang].sunset;
+    langSunrise.innerText = dataLang[lang].sunrise;
+    langMoonset.innerText = dataLang[lang].moonset;
+    langMoonrise.innerText = dataLang[lang].moonrise;
+    langFeelsDay.innerText = dataLang[lang].feels;
+    langFeelsNight.innerText = dataLang[lang].feels;
 
     dailyForecast.append(dailyElement);
   }

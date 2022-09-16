@@ -1,7 +1,12 @@
-import { capitalizeFirstLetter, metric, windDirection } from "./index.js";
+import {
+  capitalizeFirstLetter,
+  metric,
+  windDirection,
+  dataLang,
+} from "./index.js";
 import lightFormat from "date-fns/lightFormat";
 
-function populateTodayForecast(data) {
+function populateTodayForecast(data, lang) {
   let locale = navigator.language;
   const todayName = document.querySelector(".city-name");
   const todayDate = document.querySelector(".today-date");
@@ -18,6 +23,11 @@ function populateTodayForecast(data) {
   const todaySunrise = document.querySelector(".today-sunrise");
   const todaySunset = document.querySelector(".today-sunset");
   const todayArrow = document.querySelector(".today-wind-arrow");
+  const langPressure = document.querySelector(".lang-pressure");
+  const langSunrise = document.querySelector(".lang-sunrise");
+  const langSunset = document.querySelector(".lang-sunset");
+  const langHumidity = document.querySelector(".lang-humidity");
+  const langDistance = document.querySelector(".lang-distance");
   const header = document.querySelector(".header");
   // getPhoto(data.weather[0].description).then((imgURL) => {
   //   header.style.backgroundImage = `url(${imgURL})`;
@@ -26,6 +36,11 @@ function populateTodayForecast(data) {
   let date = fullDateMs.toLocaleString(locale);
   let sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString(locale);
   let sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString(locale);
+  langPressure.innerText = dataLang[lang].pressure;
+  langSunrise.innerText = dataLang[lang].sunrise;
+  langSunset.innerText = dataLang[lang].sunset;
+  langHumidity.innerText = dataLang[lang].humidity;
+  langDistance.innerText = dataLang[lang].distance;
   todayName.innerText = `${data.name}, ${data.sys.country}`;
   todayName.dataset.lat = data.coord.lat;
   todayName.dataset.lon = data.coord.lon;
@@ -35,7 +50,7 @@ function populateTodayForecast(data) {
   todayFeels.innerText = Math.round(data.main.feels_like);
   todayDes.innerText = capitalizeFirstLetter(data.weather[0].description);
   todayWind.innerText = data.wind.speed;
-  todayWindDirection.innerText = windDirection(data.wind.deg);
+  todayWindDirection.innerText = windDirection(data.wind.deg, lang);
   todayVisibility.innerText = data.visibility / 1000;
   todayPressure.innerText = data.main.pressure;
   todayHumidity.innerText = data.main.humidity;
