@@ -22,7 +22,8 @@ What is still missing:
 1. Design. It is very minimalistic, which, on the one hand, is not bad, but on the other hand, the site looks raw and unfinished. I did most of the functional part.
 2. I wanted to make a dynamic picture from behind. But something went wrong. Maybe I'll do it in the future.
 
-   17.07.2021 - The site is working. There is support for different displays. Saving the number system and the last selected city.
+   17.07.2022 - The site is working. There is support for different displays. Saving the number system and the last selected city.
+   16.09.2022 - Add Ukrainian Language.
 
 Header picture by [Billy Huynh](https://unsplash.com/@billy_huy)
 
