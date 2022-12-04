@@ -28,3 +28,6 @@ What is still missing:
 Header picture by [Billy Huynh](https://unsplash.com/@billy_huy)
 
 Link - https://kartohan.github.io/weather-app-TOP-Project/
+
+Preview
+![screencapture-kartohan-github-io-weather-app-TOP-Project-2022-12-04-16_22_41 (1)](https://user-images.githubusercontent.com/99285514/205496222-63f69cb1-1044-4167-b924-4bdf8bd0a1fc.png)
