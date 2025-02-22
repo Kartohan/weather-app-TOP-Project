@@ -12,7 +12,8 @@ const hourTemplate = document.querySelector(".hour-template");
 function populateHourly(data, lang) {
   let locale = navigator.language;
   hourlyForecast.innerHTML = "";
-  for (let i = 0; i < data.hourly.length; i++) {
+  console.log(data)
+  for (let i = 0; i < data.list.length; i++) {
     const hourlyElement = document.importNode(hourTemplate.content, true);
     const hourlyTime = hourlyElement.querySelector(".hourly-time");
     const hourlyImg = hourlyElement.querySelector(".hourly-img");
@@ -23,7 +24,7 @@ function populateHourly(data, lang) {
     const hourlyWind = hourlyElement.querySelector(".wind-speed-hourly");
     const hourlyPop = hourlyElement.querySelector(".pop-hourly");
     const hourlyPressure = hourlyElement.querySelector(".pressure-hourly");
-    const hourlyCloudness = hourlyElement.querySelector(".cloudness-hourly");
+    // const hourlyCloudness = hourlyElement.querySelector(".cloudness-hourly");
     const hourlyWindDirection = hourlyElement.querySelector(
       ".wind-direction-hourly"
     );
@@ -45,7 +46,7 @@ function populateHourly(data, lang) {
         dimSpeed[i].innerText = dataLang[lang].speed.imperial;
       }
     }
-    let full = new Date(data.hourly[i].dt * 1000);
+    let full = new Date(data.list[i].dt * 1000);
     let time = full.toLocaleTimeString(locale);
     time = time.slice(0, 5);
     let hours = full.getHours();
@@ -58,21 +59,21 @@ function populateHourly(data, lang) {
     } else {
       hourlyTime.innerText = time;
     }
-    hourlyImg.src = `http://openweathermap.org/img/wn/${data.hourly[i].weather[0].icon}@2x.png`;
-    hourlyTemp.innerText = Math.round(data.hourly[i].temp);
-    hourlyFeels.innerText = Math.round(data.hourly[i].feels_like);
+    hourlyImg.src = `http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`;
+    hourlyTemp.innerText = Math.round(data.list[i].main.temp);
+    hourlyFeels.innerText = Math.round(data.list[i].main.feels_like);
     hourlyDes.innerText = capitalizeFirstLetter(
-      data.hourly[i].weather[0].description
+      data.list[i].weather[0].description
     );
-    hourlyArrow.style.transform = `rotate(${data.hourly[i].wind_deg + 180}deg)`;
-    hourlyWind.innerText = data.hourly[i].wind_speed.toFixed(1);
+    hourlyArrow.style.transform = `rotate(${data.list[i].wind.deg + 180}deg)`;
+    hourlyWind.innerText = data.list[i].wind.speed.toFixed(1);
     hourlyWindDirection.innerText = windDirection(
-      data.hourly[i].wind_deg,
+      data.list[i].wind.deg,
       lang
     );
-    hourlyPop.innerText = Math.round(data.hourly[i].pop * 100);
-    hourlyPressure.innerText = data.hourly[i].pressure;
-    hourlyCloudness.innerText = data.hourly[i].clouds;
+    hourlyPop.innerText = Math.round(data.list[i].pop * 100);
+    hourlyPressure.innerText = data.list[i].main.pressure;
+    // hourlyCloudness.innerText = data.list[i].main.clouds;
     langPressure.innerText = dataLang[lang].pressure;
     langFeels.innerText = dataLang[lang].feels;
 

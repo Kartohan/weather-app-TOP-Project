@@ -32,7 +32,7 @@ const dataLang = {
     moonset: "Moonset:",
     moonrise: "Moonrise:",
     daily: "Daily",
-    hourly: "Hourly",
+    hourly: "Every 3 hours",
     search: "Search",
     placeholder: "Write a city name",
     imperial: "Imperial",
@@ -52,7 +52,7 @@ const dataLang = {
     moonset: "Захід Місяця:",
     moonrise: "Схід Місяця:",
     daily: "Щоденно",
-    hourly: "Погодинно",
+    hourly: "Кожні 3 години",
     search: "Пошук",
     placeholder: "Напишіть назву міста",
     imperial: "Імперська",
@@ -76,7 +76,7 @@ if (userLang === "uk" || userLang === "ru" || userLang === "ua") {
 }
 
 hourlyText.innerText = dataLang[lang].hourly;
-dailyText.innerText = dataLang[lang].daily;
+// dailyText.innerText = dataLang[lang].daily;
 langSearch.innerText = dataLang[lang].search;
 langDimImperial.innerText = dataLang[lang].imperial;
 langDimMetric.innerText = dataLang[lang].metric;
@@ -220,7 +220,7 @@ searchInput.setAttribute("Placeholder", dataLang[lang].placeholder);
 
 searchForm.addEventListener("submit", searchSubmit);
 window.onclick = (e) => {
-  if (e.path.find((i) => i.className === "searchbox") === undefined) {
+  if (e.srcElement.className != "search-response") {
     searchOutput.innerHTML = "";
   }
 };
@@ -263,7 +263,7 @@ function populateForecast(lat, lon, dimension, lang) {
     populateTodayForecast(data, lang);
     getForecast(lat, lon, dimension, lang).then((wdata) => {
       populateHourly(wdata, lang);
-      populateDaily(wdata, lang);
+      // populateDaily(wdata, lang);
     });
   });
 }

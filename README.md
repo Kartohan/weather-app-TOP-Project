@@ -24,6 +24,7 @@ What is still missing:
 
    17.07.2022 - The site is working. There is support for different displays. Saving the number system and the last selected city.<br>
    16.09.2022 - Add Ukrainian Language.
+   22.02.2025 - UI changes. API calls for hourly and daily forecast became paid, so i changed API call to free one and it gives only 5 day 3 hour forecast. 
 
 Header picture by [Billy Huynh](https://unsplash.com/@billy_huy)
 
