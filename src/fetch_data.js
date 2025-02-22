@@ -42,7 +42,7 @@ async function getForecast(lat, lon, dim, lang) {
   if (dim === "metric") {
     try {
       let forecastDaily = await fetchData(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&exclude=alerts,current&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
       );
       return forecastDaily;
     } catch (error) {
@@ -51,7 +51,7 @@ async function getForecast(lat, lon, dim, lang) {
   } else if (dim === "imperial") {
     try {
       let forecastDaily = await fetchData(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&exclude=alerts,current&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
       );
       return forecastDaily;
     } catch (error) {
