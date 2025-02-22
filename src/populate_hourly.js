@@ -12,7 +12,6 @@ const hourTemplate = document.querySelector(".hour-template");
 function populateHourly(data, lang) {
   let locale = navigator.language;
   hourlyForecast.innerHTML = "";
-  console.log(data)
   for (let i = 0; i < data.list.length; i++) {
     const hourlyElement = document.importNode(hourTemplate.content, true);
     const hourlyTime = hourlyElement.querySelector(".hourly-time");
@@ -46,19 +45,20 @@ function populateHourly(data, lang) {
         dimSpeed[i].innerText = dataLang[lang].speed.imperial;
       }
     }
-    let full = new Date(data.list[i].dt * 1000);
-    let time = full.toLocaleTimeString(locale);
-    time = time.slice(0, 5);
-    let hours = full.getHours();
-    let date = full.getDate();
-    let month = full.getMonth();
-    let year = full.getYear();
-    let fullDate = lightFormat(new Date(year, month, date), "dd.MM");
-    if (hours === 0) {
-      hourlyTime.innerText = fullDate;
-    } else {
-      hourlyTime.innerText = time;
-    }
+    // let full = new Date(data.list[i].dt * 1000);
+    // let time = full.toLocaleTimeString(locale);
+    // time = time.slice(0, 5);
+    // let hours = full.getHours();
+    // let date = full.getDate();
+    // let month = full.getMonth();
+    // let year = full.getYear();
+    // let fullDate = lightFormat(new Date(year, month, date), "dd.MM");
+    // if (hours === 0) {
+    //   hourlyTime.innerText = fullDate;
+    // } else {
+    //   hourlyTime.innerText = time;
+    // }
+    hourlyTime.innerText = data.list[i].dt_txt;
     hourlyImg.src = `http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`;
     hourlyTemp.innerText = Math.round(data.list[i].main.temp);
     hourlyFeels.innerText = Math.round(data.list[i].main.feels_like);
