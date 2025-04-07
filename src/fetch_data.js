@@ -1,3 +1,5 @@
+const apiKey = process.env.API_KEY;
+
 async function fetchData(url) {
   try {
     let response = await fetch(url);
@@ -22,7 +24,7 @@ async function getFlag(url) {
 
 async function getCoodrs(city) {
   let data = await fetchData(
-    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`
   );
   return data;
 }
@@ -42,7 +44,7 @@ async function getForecast(lat, lon, dim, lang) {
   if (dim === "metric") {
     try {
       let forecastDaily = await fetchData(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&appid=${apiKey}`
       );
       return forecastDaily;
     } catch (error) {
@@ -51,7 +53,7 @@ async function getForecast(lat, lon, dim, lang) {
   } else if (dim === "imperial") {
     try {
       let forecastDaily = await fetchData(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&appid=${apiKey}`
       );
       return forecastDaily;
     } catch (error) {
@@ -63,7 +65,7 @@ async function getForecastCurrent(lat, lon, dim, lang) {
   if (dim === "metric") {
     try {
       let forecastCurrent = await fetchData(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&appid=${apiKey}`
       );
       return forecastCurrent;
     } catch (error) {
@@ -72,7 +74,7 @@ async function getForecastCurrent(lat, lon, dim, lang) {
   } else if (dim === "imperial") {
     try {
       let forecastCurrent = await fetchData(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&appid=173ad0ecb6f3381ea8adf069b81fb2fe`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=${dim}&appid=${apiKey}`
       );
       return forecastCurrent;
     } catch (error) {
